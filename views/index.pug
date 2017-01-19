@@ -3,3 +3,9 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  div.container
+    .row
+      .col-md-offset-2.col-md-7
+
+  for project in projects
+    div.well= project.project_name
