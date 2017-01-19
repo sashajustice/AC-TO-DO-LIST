@@ -10,5 +10,16 @@ block content
 
   for project in projects
     div.well= project.project_name
-      button.btn.btn-default.pull-right(data-toggle='collapse', href='#'+project.id, aria-expanded='false', aria-controls=project.id) view
-      div.collapse(id=project.id) TESTING
+      button.btn.btn-default.pull-right(data-toggle='collapse', href='#'+project.id, aria-expanded='false', aria-controls=project.id)
+       span.glyphicon.glyphicon-triangle-bottom(aria-hidden="true")
+      div.collapse(id=project.id)
+
+       br
+       p
+         strong Description
+       br
+       hr
+       button.btn.btn-default.edit-task
+        span.glyphicon.glyphicon-edit(aria-hidden="true")
+       button.btn.btn-danger.delete-task
+        span.glyphicon.glyphicon-edit(aria-hidden="true")
