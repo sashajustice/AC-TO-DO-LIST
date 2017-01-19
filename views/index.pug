@@ -3,9 +3,12 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  div.container
+
+  div.wrapper
     .row
       .col-md-offset-2.col-md-7
 
   for project in projects
     div.well= project.project_name
+      button.btn.btn-default.pull-right(data-toggle='collapse', href='#'+project.id, aria-expanded='false', aria-controls=project.id) view
+      div.collapse(id=project.id) TESTING
