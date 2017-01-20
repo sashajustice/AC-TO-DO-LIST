@@ -11,5 +11,11 @@ router.get('/', function(req, res, next) {
   })
 })
 
+router.post('/insert-project', function(req, res, next) {
+  Projects.create(req.body.projectN, req.body.descrip).then(function(result) {
+    res.redirect('/');
+  })
+})
+
 
 module.exports = router;
