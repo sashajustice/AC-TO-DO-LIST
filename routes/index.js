@@ -11,5 +11,17 @@ router.get('/', function(req, res, next) {
   })
 })
 
+router.post('/insert-project', function(req, res, next) {
+  Projects.create(req.body.projectN, req.body.descrip).then(function(result) {
+    res.redirect('/');
+  })
+})
+
+router.post('/deleteTask/:id', function(req, res, next) {
+  Projects.delete(req.params.id).then(function() {
+    res.redirect('/');
+  })
+})
+
 
 module.exports = router;

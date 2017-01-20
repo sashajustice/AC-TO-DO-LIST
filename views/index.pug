@@ -20,15 +20,16 @@ block content
 
        br
        p
-         strong Description
+         strong= project.description
        br
        hr
-       button.btn.btn-default.edit-task
+       button.btn.btn-default.edit-task(data-toggle='modal' data-target='#editFormModal' data-id=project.id data-name=project.project_name data-description=project.description)
         span.glyphicon.glyphicon-edit(aria-hidden="true")
-       button.btn.btn-danger.delete-task
-        span.glyphicon.glyphicon-edit(aria-hidden="true")
+        form(action='/deleteTask/'+project.id method='post')
+         button.btn.btn-danger.deleteTask
+          span.glyphicon.glyphicon-edit(aria-hidden="true")
 
-  #formModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+  form#formModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel' action='/insert-project' method='post')
     .modal-dialog(role='document')
       .modal-content
         .modal-header
@@ -38,10 +39,28 @@ block content
         .modal-body
           .form-group
             label Project name
-            input.form-control(type='text',name='name')
+            input.projectN.form-control(type='text',name='projectN')
           .form-group
             label Directions
-            input.form-control(type='text',name='name')
+            input.descrip.form-control(type='text',name='descrip')
+        .modal-footer
+          button.btn.btn-default(type='button', data-dismiss='modal') Close
+          input.btn.btn-primary(type='submit', value='Save')
+
+  form#editFormModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editFormModalLabel' action='/edit-project' method='post')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+          h4#myModalLabel.modal-title My tasks
+        .modal-body
+          .form-group
+            label Project name
+            input.projectN.form-control(type='text',name='projectN')
+          .form-group
+            label Directions
+            input.descrip.form-control(type='text',name='descrip')
         .modal-footer
           button.btn.btn-default(type='button', data-dismiss='modal') Close
           input.btn.btn-primary(type='submit', value='Save')
