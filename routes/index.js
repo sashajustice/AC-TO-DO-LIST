@@ -17,5 +17,11 @@ router.post('/insert-project', function(req, res, next) {
   })
 })
 
+router.post('/deleteTask/:id', function(req, res, next) {
+  Projects.delete(req.params.id).then(function() {
+    res.redirect('/');
+  })
+})
+
 
 module.exports = router;
