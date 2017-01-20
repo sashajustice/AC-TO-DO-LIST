@@ -7,6 +7,10 @@ block content
   div.wrapper
     .row
       .col-md-offset-2.col-md-7
+        button.btn.btn-primary.btn-block(type='button', data-toggle='modal', data-target='#formModal')
+          | Add Task
+
+      br
 
   for project in projects
     div.well= project.project_name
@@ -23,3 +27,21 @@ block content
         span.glyphicon.glyphicon-edit(aria-hidden="true")
        button.btn.btn-danger.delete-task
         span.glyphicon.glyphicon-edit(aria-hidden="true")
+
+  #formModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+          h4#myModalLabel.modal-title My tasks
+        .modal-body
+          .form-group
+            label Project name
+            input.form-control(type='text',name='name')
+          .form-group
+            label Directions
+            input.form-control(type='text',name='name')
+        .modal-footer
+          button.btn.btn-default(type='button', data-dismiss='modal') Close
+          input.btn.btn-primary(type='submit', value='Save')
