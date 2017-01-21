@@ -23,5 +23,11 @@ router.post('/deleteTask/:id', function(req, res, next) {
   })
 })
 
+router.post('/isCompleted/:id', function(req, res, next) {
+  Projects.completed(req.params.id).then(function() {
+    res.redirect('/');
+  })
+})
+
 
 module.exports = router;

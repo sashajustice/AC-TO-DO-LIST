@@ -12,6 +12,9 @@ const Projects = {
   },
   delete: (id) => {
     return db.none('DELETE from projects WHERE id = $1', [id])
+  },
+  completed: (id) => {
+    return db.any('UPDATE projects SET isCompleted=true WHERE id = $1', [id])
   }
 }
 
