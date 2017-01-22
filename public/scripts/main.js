@@ -1,10 +1,10 @@
-$('.edit-task').on('click', () => {
-  $('#edit-form-name').val($(this).data('name'));
-  $('#edit-form-directions').val($(this).data('directions'));
-  $('#edit-form-id').val($(this).data('id'));
-});
-
 $('#completedBtn').on('click', () => {
   $('.well').css('text-decoration','line-through');
   console.log('strikethrough worked!');
+});
+
+$('.edit-task').on('click', function() {
+  // get the id & pass id to modal
+  const projectId = $(this).data('id');
+  $('#edit-form-id').val(projectId);
 });

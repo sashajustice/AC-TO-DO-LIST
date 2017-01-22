@@ -29,5 +29,13 @@ router.post('/isCompleted/:id', function(req, res, next) {
   })
 })
 
+router.post('/edit-project', function(req, res, next) {
+  Projects.edited(req.body.id, req.body.projectN, req.body.descrip).then(function() {
+    res.redirect('/');
+  }).catch(function (error) {
+        console.log(error)
+    })
+})
+
 
 module.exports = router;
