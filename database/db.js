@@ -15,6 +15,12 @@ const Projects = {
   },
   completed: (id) => {
     return db.any('UPDATE projects SET isCompleted=true WHERE id = $1', [id])
+  },
+  setToIncomplete: (id) => {
+    return db.any('UPDATE projects SET isCompleted=false WHERE id = $1', [id])
+  },
+  edited: (id, project_name, description) => {
+    return db.any('UPDATE projects SET project_name=$1, description=$2 WHERE id = $3', [project_name, description, id])
   }
 }
 
