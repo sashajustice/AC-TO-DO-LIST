@@ -13,6 +13,26 @@ block content
       br
 
   for project in projects
+   if project.iscompleted
+    div.well.lineThrough= project.project_name
+      button.btn.btn-default.pull-right(data-toggle='collapse', href='#'+project.id, aria-expanded='false', aria-controls=project.id)
+       span.glyphicon.glyphicon-triangle-bottom(aria-hidden="true")
+      div.collapse(id=project.id)
+
+        br
+        p
+          strong= project.description
+        br
+        hr
+        button.btn.btn-default.edit-task(data-toggle='modal' data-target='#editFormModal' data-id=project.id data-name=project.project_name data-description=project.description)
+         span.glyphicon.glyphicon-edit(aria-hidden="true")
+         form(action='/deleteTask/'+project.id method='post')
+          button.btn.btn-danger.deleteTask
+           span.glyphicon.glyphicon-remove(aria-hidden="true")
+         form(action='/isCompleted/'+project.id method='post')
+          button#completedBtn.btn.btn-primary.completeTask
+           span.glyphicon.glyphicon-check(aria-hidden="true")
+   else
     div.well= project.project_name
       button.btn.btn-default.pull-right(data-toggle='collapse', href='#'+project.id, aria-expanded='false', aria-controls=project.id)
        span.glyphicon.glyphicon-triangle-bottom(aria-hidden="true")
@@ -27,10 +47,10 @@ block content
         span.glyphicon.glyphicon-edit(aria-hidden="true")
         form(action='/deleteTask/'+project.id method='post')
          button.btn.btn-danger.deleteTask
-          span.glyphicon.glyphicon-edit(aria-hidden="true")
+          span.glyphicon.glyphicon-remove(aria-hidden="true")
         form(action='/isCompleted/'+project.id method='post')
          button#completedBtn.btn.btn-primary.completeTask
-          span.glyphicon.glyphicon-edit(aria-hidden="true")
+          span.glyphicon.glyphicon-check(aria-hidden="true")
 
   form#formModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel' action='/insert-project' method='post')
     .modal-dialog(role='document')
@@ -61,10 +81,10 @@ block content
           .modal-body
             .form-group
               label Project name
-              input#edit-form-name.projectN.form-control(type='text',name='projectN')
+              input#edit-form-name.projectN.form-control(type='text', name='projectN', placeholder='project.id')
             .form-group
               label Directions
-              input#edit-form-directions.descrip.form-control(type='text',name='descrip')
+              input#edit-form-directions.descrip.form-control(type='text', name='descrip', placeholder='placeholder text')
           .modal-footer.form-group
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             input.btn.btn-primary(type='submit', value='Save')
