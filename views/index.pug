@@ -1,8 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h3 APPREHENSIVE-CURRASOW
+  h4 #{title}
 
   div.wrapper
     .row
@@ -81,10 +81,10 @@ block content
           .modal-body
             .form-group
               label Project name
-              input#edit-form-name.projectN.form-control(type='text', name='projectN', placeholder='project.id')
+              input#edit-form-name.projectN.form-control(type='text', name='projectN', placeholder='enter new project name here')
             .form-group
               label Directions
-              input#edit-form-directions.descrip.form-control(type='text', name='descrip', placeholder='placeholder text')
+              input#edit-form-directions.descrip.form-control(type='text', name='descrip', placeholder='enter new details here')
           .modal-footer.form-group
             button.btn.btn-default(type='button', data-dismiss='modal') Close
             input.btn.btn-primary(type='submit', value='Save')

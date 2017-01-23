@@ -1,7 +1,7 @@
-$('#completedBtn').on('click', () => {
+/*$('#completedBtn').on('click', () => {
   $('.well').css('text-decoration','line-through');
   console.log('strikethrough worked!');
-});
+});*/
 
 $('.edit-task').on('click', function() {
   // get the id & pass id to modal
